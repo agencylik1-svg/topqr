@@ -443,14 +443,13 @@
         let showGoldenStars = false;
         let qr = new QRious({ element: document.getElementById('qr-canvas') });
 
-        // Supabase Initialization (Supports environment variables or window injection)
-        const SUPABASE_URL = window.SUPABASE_URL || 'YOUR_SUPABASE_URL';
-        const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+        const SUPABASE_URL = 'https://yifjqhhkctvnnxyrjtiy.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpZmpxaGhrY3R2bm54eXJqdGl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg0NDU5MjQsImV4cCI6MjEwNDAyMTkyNH0.sZ4D08IVOuYvkU19YbFGxNtygvpScMO04AW-z3HQYfE';
         let supabaseClient = null;
         let useCloudSync = false;
 
         try {
-            if (window.supabase && SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
+            if (window.supabase) {
                 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
                 useCloudSync = true;
             }
@@ -544,7 +543,7 @@
                         document.getElementById('sync-dot').className = 'w-2 h-2 rounded-full bg-amber-500';
                     }
                 } else {
-                    document.getElementById('sync-text').innerText = 'Local Browser Mode (Supabase keys missing)';
+                    document.getElementById('sync-text').innerText = 'Local Browser Mode';
                     document.getElementById('sync-dot').className = 'w-2 h-2 rounded-full bg-slate-500';
                 }
             } catch(e) {
